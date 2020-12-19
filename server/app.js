@@ -17,7 +17,7 @@ var indexRouter = require('./routes/index.js');
 //   .catch(err => console.error(err));
 
 const mongoose = require("mongoose");
-
+//var
 
 mongoose.connect('mongodb://localhost/easy-duty', { useNewUrlParser: true ,useUnifiedTopology: true , useCreateIndex:true} );
 
