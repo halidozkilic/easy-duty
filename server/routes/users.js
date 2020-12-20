@@ -18,12 +18,15 @@ router.get("/auth", auth, (req, res) => {
         lastname: req.user.lastname,
         role: req.user.role,
         image: req.user.image,
+
     });
 });
 
 router.post("/register", (req, res) => {
 
     const user = new User(req.body);
+
+    user.username=req.body.name+req.body.lastname;
 
     user.save((err, doc) => {
         if (err) return res.json({ success: false, err });

@@ -14,6 +14,13 @@ const userSchema = mongoose.Schema({
         trim:true,
         unique: 1 
     },
+    username:{
+        type:String
+    },
+
+    tasks:{
+        type:Array
+    },
     password: {
         type: String,
         minglength: 5
