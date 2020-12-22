@@ -9,8 +9,8 @@ var task = new Schema({
     name: {type:String, require:true},
     description:{type:String, require:true},
     status:{type:String, require:false},
-    comment:{type:Array, require:false},
-    belongTo:{type:Array,require:false}
+    comments:[{username:String,comment:String}],
+    belongTo:[String]
 });
 
 
