@@ -32,9 +32,10 @@ router.post('/createTask', async function addToDB(req, res) {
  //düzenlenecek tam istedigimiz gibi calısmıyor!
    console.log(req.body.comment);
     try {
-     doc= await task.update(
+     doc= await Task.findOneAndUpdate(
         {_id:req.body._id },
-        { $push:{ comments:req.body.comment, } }
+        { $push:{ comments:req.body.comment } },
+        {safe: true, upsert: true},
       )
       return res.status(201).json(doc);
     }
