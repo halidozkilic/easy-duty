@@ -17,7 +17,6 @@ router.post("/createTask", async function addToDB(req, res) {
 
   
   const taskBody = [{ jobID: req.body._id, status: false }];
-  
 
   try {
     doc = await task.save();
@@ -35,6 +34,7 @@ router.post("/createTask", async function addToDB(req, res) {
 
 router.post("/addComment", async function (req, res) {
   console.log(req.body._id);
+  
   try {
     doc = await Task.findOneAndUpdate(
       { _id: req.body._id },
