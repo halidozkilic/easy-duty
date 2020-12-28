@@ -47,4 +47,34 @@ router.post("/addComment", async function (req, res) {
   }
 });
 
+router.get("/getJobs",async function(req,res){
+
+  try {
+    doc = await Task.find({});
+    console.log(doc[0].belongTo);
+    return res.status(201).json(doc);
+  }
+  catch
+  {
+    return res.status(501).json(err);
+  }
+})
+
+router.get("/userDetail/:username", async function(req,res){
+
+  try
+  {
+    doc = await User.findOne({
+      username:req.params.username,
+    })
+    return res.status(201).json(doc);
+  }
+  catch
+  {
+    return res.status(501).json(err);
+  }
+})
+
+
+
 module.exports = router;
