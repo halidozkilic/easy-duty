@@ -4,8 +4,8 @@
   "description": "mern stack starter",
   "main": "index.js",
   "engine": {
-    "node": "10.16.0",
-    "npm": "6.9.0"
+    "node": "12.19.0",
+    "npm": "6.14.8"
   },
   "scripts": {
     "start": "node ./bin/www.js",

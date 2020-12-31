@@ -54,7 +54,7 @@ router.get("/getJobs",async function(req,res){
     console.log(doc[0].belongTo);
     return res.status(201).json(doc);
   }
-  catch
+  catch(err)
   {
     return res.status(501).json(err);
   }
@@ -69,7 +69,7 @@ router.get("/getJobs/:id", async function(req,res){
     })
     return res.status(201).json(doc);
   }
-  catch
+  catch(err)
   {
     return res.status(501).json(err);
   }
@@ -84,7 +84,7 @@ router.get("/userDetail/:username", async function(req,res){
     })
     return res.status(201).json(doc);
   }
-  catch
+  catch(err)
   {
     return res.status(501).json(err);
   }
