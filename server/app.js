@@ -8,18 +8,20 @@ const cookieParser = require("cookie-parser");
 
 var indexRouter = require('./routes/index.js');
 
-//const config = require("./config/key");
+const config = require("./config/key");
 
-// const mongoose = require("mongoose");
-// mongoose
-//   .connect(config.mongoURI, { useNewUrlParser: true })
-//   .then(() => console.log("DB connected"))
-//   .catch(err => console.error(err));
+ const mongoose = require("mongoose")
 
-const mongoose = require("mongoose");
+   .connect(config.mongoURI, { useNewUrlParser: true })
+  .then(() => console.log("DB connected"))
+   .catch(err => console.error(err));
+
+
+//const mongoose = require("mongoose");
 //var
 
-mongoose.connect('mongodb://localhost/easy-duty', { useNewUrlParser: true ,useUnifiedTopology: true , useCreateIndex:true} );
+//local
+//mongoose.connect('mongodb://localhost/easy-duty', { useNewUrlParser: true ,useUnifiedTopology: true , useCreateIndex:true} );
 
 //ATLAS CONNECTION
 /* const connect = mongoose.connect(config.mongoURI,
