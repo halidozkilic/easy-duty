@@ -1,38 +1,44 @@
 import axios from 'axios';
 import React, {Component, useState, useEffect } from 'react';
-import { StyleSheet, Text, View,Button } from 'react-native';
+import { StyleSheet, Text, View,Button,TouchableOpacity } from 'react-native';
 import { AuthC } from '../../Context/authContext';
-import api from '../../services/api';
+import taskapi from '../../services/taskapi';
 import { useNavigation } from '@react-navigation/native';
 
-export default class GetJobs extends Component {
+export default function GetJobs () {
+  const Navi = useNavigation();
+  const [jobs,setJobs]=useState([""]);
+      
+
+  function handleCreateJobs(list){
+    Navi.navigate('CreateJob');
+}
+
+      
+   useEffect(() => {
+    async function getJobs(){
+      try{
+          const response = await taskapi.get('getJobs');
+          setJobs(response.data);
+          return response;
+      }catch(err){
+          console.log('Error cant fecth Jobs')
+      }
+  }
+  getJobs();
+}, [taskapi,jobs])
+
+      
+//console.log(jobs)
    
-    
-    state={
-        jobs:[""],
-        setJobs:[],
-      }
-
-      
-       componentDidMount(){
-        axios.get("https://easy-duty-api.herokuapp.com/api/getJobs")
-        .then( response=>{         
-           this.setState({jobs:response.data});     
-        })
-        .catch( (error)=> {
-          console.log(error);
-        });
-      }
-
-      
-
-    render() {
-        return (
+        return(
             <View style={styles.container}>
-                <Text>{this.state.jobs[0].name}</Text>           
+                <Text>{jobs[0].name}</Text>
+                <TouchableOpacity onPress={() => handleCreateJobs()}>
+                        <Text style={{fontSize: 16, fontWeight: 'bold', marginTop: 20}}>Create New Job</Text>
+                    </TouchableOpacity>        
             </View>
-        )
-    }
+        );
 }
 
 const styles = StyleSheet.create({

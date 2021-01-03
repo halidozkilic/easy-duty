@@ -6,7 +6,7 @@ import { View, Button, Text, StyleSheet } from "react-native";
 const Home = () => {
   return (
     <View style={styles.center}>
-      <Text>This is the home screen</Text>
+      <Text>Welcome to easy duty app.</Text>
       <Button title="Go to About Screen" />
     </View>
   );
