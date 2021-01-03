@@ -80,6 +80,7 @@ export const AuthProvider = ({ children }) => {
     
 
      function handleLogout(){
+        api.get('logout')
          AsyncStorage.clear().then(() => {
             setUser(false);
         })

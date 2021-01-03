@@ -7,7 +7,6 @@ const Home = () => {
   return (
     <View style={styles.center}>
       <Text>Welcome to easy duty app.</Text>
-      <Button title="Go to About Screen" />
     </View>
   );
 };

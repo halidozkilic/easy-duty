@@ -19,10 +19,10 @@ export default function Profile(){
         
         async function handList(){
             try{
-                const response = await api.get('users')
-                setList(response.data)
+              
+                setList(user)
             }catch(err){
-                console.log('Erro')
+                console.log('Error couldt fecth user infos')
             }
         }
 
@@ -37,22 +37,9 @@ export default function Profile(){
                     <Text style={{color: '#fff', fontSize: 20}}>Logout</Text>
                 </TouchableOpacity>
 
-    <Text style={{marginEnd: 20, fontWeight: 'bold', fontSize: 18}}>Welcome, {user}</Text>
+            <Text style={{marginEnd: 20, fontWeight: 'bold', fontSize: 18}}>Welcome, {user}</Text>
             </View>
-            <FlatList style={{}}
-            data={list}
-            keyExtractor={list => String(list.id)}
-            showsVerticalScrollIndicator={false}
-            renderItem={({ item: list }) => (
-                <View style={style.box}>
-                    <Text style={style.TextBox}>NAME: {list.name}</Text>
-                    <Text style={style.TextBox}>EMAIL: {list.email}</Text>
-                    <TouchableOpacity onPress={() => handleInfo(list)}>
-                        <Text style={{fontSize: 16, fontWeight: 'bold', marginTop: 20}}>More information...</Text>
-                    </TouchableOpacity>
-                </View>
-            )}
-            />
+            
             
         </View>
     );
