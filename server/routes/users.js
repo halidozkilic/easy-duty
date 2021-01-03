@@ -37,7 +37,7 @@ router.post("/register", (req, res) => {
                 .cookie("w_auth", user.token)
                 .status(200)
                 .json({
-                  token:user.token
+                    token:user.token,email:user.email,name:user.name,username:user.username,
                 });
         });
     });
@@ -62,7 +62,7 @@ router.post("/login", (req, res) => {
                     .cookie("w_auth", user.token)
                     .status(200)
                     .json({
-                      token:user.token,email:user.email,name:user.name
+                      token:user.token,email:user.email,name:user.name,username:user.username,tasks:user.tasks
                     });
             });
         });
