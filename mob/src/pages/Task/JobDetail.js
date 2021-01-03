@@ -4,7 +4,7 @@ import { View, StyleSheet, Text } from "react-native";
 const JobDetail = () => {
   return (
     <View style={styles.center}>
-      <Text>This is the JobDetail screen</Text>
+      <Text>This is the jobdetail screen</Text>
     </View>
   );
 };
