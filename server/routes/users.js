@@ -37,7 +37,7 @@ router.post("/register", (req, res) => {
                 .cookie("w_auth", user.token)
                 .status(200)
                 .json({
-                    token:user.token,email:user.email,name:user.name,username:user.username,
+                    token:user.token,email:user.email,name:user.name,username:user.username,success: true
                 });
         });
     });
@@ -62,7 +62,33 @@ router.post("/login", (req, res) => {
                     .cookie("w_auth", user.token)
                     .status(200)
                     .json({
-                      token:user.token,email:user.email,name:user.name,username:user.username,tasks:user.tasks
+                      token:user.token,email:user.email,name:user.name,username:user.username,tasks:user.tasks,loginSuccess: true, userId: user._id,
+                    });
+            });
+        });
+    });
+});
+
+router.post("/loginWithWeb", (req, res) => {
+    User.findOne({ email: req.body.email }, (err, user) => {
+        if (!user)
+            return res.json({
+                loginSuccess: false,
+                message: "Auth failed, email not found"
+            });
+
+        user.comparePassword(req.body.password, (err, isMatch) => {
+            if (!isMatch)
+                return res.json({ loginSuccess: false, message: "Wrong password" });
+
+            user.generateToken((err, user) => {
+                if (err) return res.status(400).send(err);
+                res.cookie("w_authExp", user.tokenExp);
+                res
+                    .cookie("w_auth", user.token)
+                    .status(200)
+                    .json({
+                        loginSuccess: true, userId: user._id
                     });
             });
         });
