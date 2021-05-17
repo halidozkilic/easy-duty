@@ -12,8 +12,14 @@ import taskapi from '../../../services/taskapi';
 
 
     function createNewJob(values){
-        var str;
-        str=values.belongTo.split(',');
+        var str = values.belongTo;
+        console.log(values)
+        if(str.includes(',')){
+            str=values.belongTo.split(',');
+        } else {
+            str=values.belongTo;
+        }
+
         values.belongTo=str;
         console.log(values);
         create(values);
@@ -32,7 +38,6 @@ import taskapi from '../../../services/taskapi';
 
     return(
         <div
-            behavior='height'
             style={style.container}>
             <div style={style.ViewContainer}>
 
@@ -52,28 +57,28 @@ import taskapi from '../../../services/taskapi';
                             {errors._id && <p style={{fontSize: 10, color: 'red'}}>{errors._id}</p>}
                             <Input style={style.input}
                                        value={values._id}
-                                       onChangeText={handleChange('_id')}
+                                       onChange={handleChange('_id')}
                                        placeholder="Task number"
                                        autoCorrect={false}/>
 
                             {errors.name && <p style={{fontSize: 10, color: 'red'}}>{errors.name}</p>}
                             <Input style={style.input}
                                        value={values.name}
-                                       onChangeText={handleChange('name')}
+                                       onChange={handleChange('name')}
                                        placeholder="Task Name"
                                        autoCorrect={false}/>
 
                             {errors.description && <p style={{fontSize: 10, color: 'red'}}>{errors.description}</p>}
                             <Input style={style.input}
                                        value={values.description}
-                                       onChangeText={handleChange('description')}
+                                       onChange={handleChange('description')}
                                        placeholder="description"
                                        autoCorrect={false}/>
 
                             {errors.belongTo && <p style={{fontSize: 10, color: 'red'}}>{errors.belongTo}</p>}
                             <Input style={style.input}
                                        value={values.belongTo}
-                                       onChangeText={handleChange('belongTo')}
+                                       onChange={handleChange('belongTo')}
                                        placeholder="BelongTo:Halid,Jack,Anna"
                                        autoCorrect={false}
                             />
