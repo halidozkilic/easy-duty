@@ -1,2 +1,2 @@
 //SERVER ROUTES
-export const USER_SERVER = 'https://easy-duty-api.herokuapp.com/api/users';
+export const USER_SERVER = '/api/users';

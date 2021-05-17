@@ -4,7 +4,7 @@ module.exports = function (app) {
     app.use(
         '/api',
         createProxyMiddleware({
-            target: 'https://easy-duty-api.herokuapp.com/',
+            target: 'https://easy-duty-api.herokuapp.com',
             changeOrigin: true,
         })
     );
