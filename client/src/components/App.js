@@ -9,6 +9,7 @@ import NavBar from "./views/NavBar/NavBar";
 import Footer from "./views/Footer/Footer"
 import GetJobs from "./views/Task/GetJobs"
 import CreateJob from "./views/Task/CreateJob"
+import JobDetail from "./views/Task/JobDetail"
 
 //null   Anyone Can go inside
 //true   only logged in user can go inside
@@ -25,6 +26,7 @@ function App() {
           <Route exact path="/register" component={Auth(RegisterPage, false)} />
             <Route exact path="/getJobs" component={Auth(GetJobs, true)} />
             <Route exact path="/createJobs" component={Auth(CreateJob, true)} />
+            <Route exact path="/getJobDetails/:id" component={Auth(JobDetail, true)} />
         </Switch>
       </div>
       <Footer />
