@@ -51,7 +51,10 @@ function GetJobs () {
                             <p style={styles.TextBox}>Enrolled:</p>
                             {job.belongTo.map(arr=>(
                                 <div style={{padding:9}}>
-                                    <p style={styles.worker}> {arr}</p>
+                                    <p style={styles.worker}> <a style={{color:"white"}} onClick={(e) => {
+                                        e.preventDefault();
+                                        window.location.href='/userDetail/'+arr;
+                                    }}>{arr}</a></p>
                                 </div>
                             ))}
                         </div>
