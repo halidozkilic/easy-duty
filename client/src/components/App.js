@@ -10,7 +10,8 @@ import Footer from "./views/Footer/Footer"
 import GetJobs from "./views/Task/GetJobs"
 import CreateJob from "./views/Task/CreateJob"
 import JobDetail from "./views/Task/JobDetail"
-
+import Profile from "./views/Users/UserProfile";
+import UserDetails from "./views/Users/UserDetails";
 //null   Anyone Can go inside
 //true   only logged in user can go inside
 //false  logged in user can't go inside
@@ -27,6 +28,8 @@ function App() {
             <Route exact path="/getJobs" component={Auth(GetJobs, true)} />
             <Route exact path="/createJobs" component={Auth(CreateJob, true)} />
             <Route exact path="/getJobDetails/:id" component={Auth(JobDetail, true)} />
+            <Route exact path="/Profile" component={Auth(Profile, true)} />
+            <Route exact path="/userDetail/:id" component={Auth(UserDetails, true)} />
         </Switch>
       </div>
       <Footer />

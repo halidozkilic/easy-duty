@@ -90,6 +90,20 @@ router.get("/userDetail/:username", async function(req,res){
   }
 })
 
+router.get("/userById/:id", async function(req,res){
+
+  try
+  {
+    doc = await User.findOne({
+      _id:req.params.id,
+    })
+    return res.status(201).json(doc);
+  }
+  catch(err)
+  {
+    return res.status(501).json(err);
+  }
+})
 
 
 module.exports = router;

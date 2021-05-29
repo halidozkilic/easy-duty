@@ -28,6 +28,7 @@ import taskapi from '../../../services/taskapi';
     async function create(values){
         try{
             const response = await taskapi.post('createTask',values);
+            window.location.href='/getJobs';
             return response;
         }catch(err){
             console.log('Error cant create new Task')
