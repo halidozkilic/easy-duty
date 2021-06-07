@@ -22,7 +22,7 @@ const  UserDetails = () => {
                 setJob(response1.data);
                 return response;
             }catch(err){
-                console.log('Error cant fecth Jobs')
+                console.log('Error cant fecth Jobs');
             }
         }
         await  getUser();
@@ -34,7 +34,7 @@ const  UserDetails = () => {
             setJob(response.data);
             return response;
         }catch(err){
-            console.log('Error cant fecth vv')
+            console.log('Error cant fecth vv');
         }
     }
 

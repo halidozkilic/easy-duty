@@ -10,8 +10,6 @@ const Profile = () => {
     const [index,setindex]=useState(0);
     const [job,setJob]=useState([]);
     const id = localStorage.getItem('userId');
-    let datas;
-
     useEffect(async () => {
             async function getUser(){
                 if(user.length<1){
@@ -21,10 +19,9 @@ const Profile = () => {
                         const response1 = await taskapi.get('/getJobs/'+response.data.tasks[index].jobID);
                         setUser(response.data);
                         setJob(response1.data);
-                        datas=response.data
                         return response;
                     }catch(err){
-                        console.log('Error cant fecth Jobs')
+                        console.log('Error cant fecth Jobs');
                     }
                 }
             }
@@ -37,7 +34,7 @@ const Profile = () => {
                 setJob(response.data);
                 return response;
             }catch(err){
-                console.log('Error cant fecth vv')
+                console.log('Error cant fecth vv');
             }
         }
 
