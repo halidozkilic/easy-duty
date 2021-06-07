@@ -17,23 +17,21 @@ const  UserDetails = () => {
         async function getUser(){
             try{
                 const response = await taskapi.get('/userDetail/'+id);
+                const response1 = await taskapi.get('/getJobs/'+response.data.tasks[index].jobID);
                 setUser(response.data);
-                datas=response.data
+                setJob(response1.data);
                 return response;
             }catch(err){
                 console.log('Error cant fecth Jobs')
             }
         }
         await  getUser();
-        getJobs(index)
     }, [])
 
-    async function getJobs(int){
+    async function getJobsWith(indexs){
         try{
-
-            const response = await taskapi.get('/getJobs/'+datas.tasks[int].jobID);
+            const response = await taskapi.get('/getJobs/'+user.tasks[indexs].jobID);
             setJob(response.data);
-
             return response;
         }catch(err){
             console.log('Error cant fecth vv')
@@ -43,12 +41,8 @@ const  UserDetails = () => {
 
 
 
-
     return (
         <div style={styles.container}>
-            {console.log(job)}
-
-
             <div style={styles.main}>
                 <div style={styles.box}>
                     <div style={styles.center}>
@@ -68,20 +62,15 @@ const  UserDetails = () => {
                         index<=0 ? '' :
                             <Button  onClick={(e) => {
                                 setindex(index-1)
-
-                                {console.log(index)}
+                                getJobsWith(index-1)
                             }}
                                      style={{border:"hidden"}}>
                                 <FontAwesomeIcon style={{fontSize: 25,paddingLeft:5}} icon={faAngleDoubleLeft}/> </Button>
-
-
                     }
                 </div>
 
 
-
                 <div style={{width:300}}>
-
                     <div style={{backgroundColor:'#7798AB', borderRadius:19}}>
                         <div>
                             <FontAwesomeIcon style={{fontSize: 25,paddingLeft:5}} icon={faClipboardList} />
@@ -112,14 +101,10 @@ const  UserDetails = () => {
                                     <FontAwesomeIcon  icon={faChevronRight} />
                                     <FontAwesomeIcon  icon={faChevronRight} />
                                 </Button>
-
                             </div>
                         </div>
                     </div>
-
                 </div>
-
-
 
 
                 <div style={styles.forward}>
@@ -128,8 +113,7 @@ const  UserDetails = () => {
                             index>= user.tasks.length-1 ? '' :
                                 <Button  onClick={(e) => {
                                     setindex(index+1)
-
-                                    {console.log(index)}
+                                    getJobsWith(index+1)
                                 }}
                                          style={{border:"hidden"}}>
                                     <FontAwesomeIcon style={{fontSize: 25,paddingLeft:5}} icon={faAngleDoubleRight}/> </Button> : ''
@@ -137,10 +121,8 @@ const  UserDetails = () => {
 
                     }
 
-
                 </div>
             </div>
-
         </div>
     );
 };
